@@ -12,9 +12,6 @@ public class Student extends Person {
     this.studentID = id_gen++;
     grades=new ArrayList<>();
   }
-  public int getStudentID() {
-    return studentID;
-  }
   public void addGrade(int grade){
     this.grades.add(grade);
   }
@@ -26,7 +23,7 @@ public class Student extends Person {
       totalGrades += grades;
       totalCredits ++;
     }
-    return totalGrades/totalCredits;
+    return (double)totalGrades/totalCredits;
   }
   @Override
   public String toString() {
