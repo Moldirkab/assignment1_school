@@ -39,7 +39,7 @@ public class Main {
       if(person instanceof Student) {
         Student student = (Student) person;
         if (student.getName().equals("Luna")) {
-          System.out.println("the gpa for " + student.getName() + " is " + student.calculateGpa());
+          System.out.println("the gpa for " + student.getName() + " is " + String.format("%.2f",student.calculateGpa()));
         }
       }
       if(person instanceof Teacher){

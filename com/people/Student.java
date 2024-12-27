@@ -20,7 +20,31 @@ public class Student extends Person {
     int totalGrades=0;
     int totalCredits=0;
     for (Integer  grades: grades) {
-      totalGrades += grades;
+      if(grades>=95 ){
+        totalGrades+=4.0;
+      }
+      else if(grades>=90 && grades<=94){
+        totalGrades+=3.67;
+      }
+      else if(grades>=85 && grades<=89){
+        totalGrades+=3.33;
+      }else if(grades>=80 && grades<=84){
+        totalGrades+=3.0;
+      }else if(grades>=75 && grades<=79){
+        totalGrades+=2.67;
+      }else if(grades>=70 && grades<=74){
+        totalGrades+=2.33;
+      }else if(grades>=65 && grades<=69){
+        totalGrades+=2.0;
+      }else if(grades>=60 && grades<=64){
+        totalGrades+=1.67;
+      }else if(grades>=55 && grades<=59){
+        totalGrades+=1.33;
+      }else if(grades>=50 && grades<=54){
+        totalGrades+=1.0;
+      }else{
+        totalGrades+=0.0;
+      }
       totalCredits ++;
     }
     return (double)totalGrades/totalCredits;
