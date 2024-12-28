@@ -64,7 +64,7 @@ public class Main {
       }
     }
     school.bubbleSort();
-    System.out.println("\n\nThe list of people who study or work at the school:");
+    System.out.println("\n\nThe list of people who study or work at the wizarding school:");
     school.print();
 
 
