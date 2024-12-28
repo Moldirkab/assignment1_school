@@ -2,16 +2,18 @@ package com.people;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class Main {
   public static void main(String[] args) throws FileNotFoundException {
-    File fileStudents =new File("/Users/aidynkabdykarimov/Downloads/students.txt");
-    File fileTeachers =new File("/Users/aidynkabdykarimov/Downloads/teachers.txt");
-    Scanner scanner=new Scanner(fileStudents);
-    Scanner scanner2=new Scanner(fileTeachers);
     School school=new School();
-     while (scanner.hasNextLine()) {
+
+
+    File fileStudents =new File("students.txt");
+    Scanner scanner=new Scanner(fileStudents);
+    try{
+      while (scanner.hasNextLine()) {
       String name = scanner.next();
       String surname = scanner.next();
       int age = Integer.parseInt(scanner.next());
@@ -21,20 +23,32 @@ public class Main {
          student.addGrade(scanner.nextInt());
        }
       school.addMember(student);
+      }
+    } catch (NoSuchElementException e) {
+    System.out.println("Input is missing.");
+  }
+    File fileTeachers =new File("teachers.txt");
+    Scanner scanner2=new Scanner(fileTeachers);
+    try {
+      while (scanner2.hasNextLine()) {
+        String name = scanner2.next();
+        String surname = scanner2.next();
+        int age = Integer.parseInt(scanner2.next());
+        String gender = scanner2.next();
+        String subject = scanner2.next();
+        int yearsOfExperience = Integer.parseInt(scanner2.next());
+        int salary = Integer.parseInt(scanner2.next());
+        Teacher teacher = new Teacher(name, surname, age, gender, subject, yearsOfExperience, salary);
+        school.addMember(teacher);
+      }
+    } catch(NoSuchElementException e) {
+    System.out.println("Input is missing.");
+  }
 
-    }
-     while (scanner2.hasNextLine()) {
-      String name = scanner2.next();
-      String surname = scanner2.next();
-      int age = Integer.parseInt(scanner2.next());
-      String gender = scanner2.next();
-      String subject=scanner2.next();
-      int yearsOfExperience = Integer.parseInt(scanner2.next());
-      int salary=Integer.parseInt(scanner2.next());
-      Teacher teacher = new Teacher(name, surname, age, gender, subject, yearsOfExperience, salary);
-      school.addMember(teacher);
 
-    }
+     scanner.close();
+     scanner2.close();
+
     for(Person person:school.getMembers()){
       if(person instanceof Student) {
         Student student = (Student) person;
